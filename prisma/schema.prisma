@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client"
   output   = "../src/generated/prisma"
@@ -14,4 +8,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
+model user_form {
+  id         String   @id @default(nanoid()) @db.VarChar(21)
+  work_area  String   @db.VarChar(20)
+  question_1 String   @db.VarChar(150)
+  question_2 String   @db.VarChar(150)
+  question_3 String   @db.VarChar(150)
+  question_4 String   @db.VarChar(150)
+  question_5 String   @db.VarChar(150)
+  question_6 String   @db.VarChar(150)
+  question_7 String   @db.VarChar(150)
+  question_8 String   @db.VarChar(150)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  email      String   @db.VarChar(150)
+}
