@@ -15,4 +15,4 @@ npm run build
 
 echo ""
 echo "4. Restart PM2 Process"
-pm2 restart rd-calcium-calculator
+pm2 restart sales-khub-form

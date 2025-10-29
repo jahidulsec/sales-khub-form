@@ -15,4 +15,4 @@ npm run build
 
 echo ""
 echo "4. Set PM2 Process"
-pm2 start 'npm run start' --name rd-calcium-calculator
+pm2 start 'npm run start' --name sales-khub-form
