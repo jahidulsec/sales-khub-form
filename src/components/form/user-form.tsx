@@ -20,6 +20,7 @@ import { Spinner } from "../ui/spinner";
 import { submitUserForm } from "@/actions/user-form";
 import { toast } from "sonner";
 import { useSearchParams } from "next/navigation";
+import { useRouter } from "@bprogress/next";
 
 const FormSchema = z.object({
   question_1: z.string("Enter your answer").min(1, "At least 1 character"),
@@ -40,19 +41,19 @@ export default function UserForm() {
   const form = useForm<FormType>({ resolver: zodResolver(FormSchema) });
 
   const searchParams = useSearchParams();
+  const router = useRouter();
 
   async function onSubmit(values: FormType) {
     values.work_area = searchParams.get("work_area") ?? "";
 
     const res = await submitUserForm(values);
 
-    console.log(values);
+    toast[res.success ? "success" : "error"](res.message);
 
     if (res.success) {
       form.reset();
+      router.push(`/success?${searchParams.toString()}`);
     }
-
-    toast[res.success ? "success" : "error"](res.message);
   }
 
   return (
@@ -203,16 +204,22 @@ export default function UserForm() {
                   }}
                   value={isOther ? "0" : field.value}
                 >
-                  <Radio value="1" label="Doctor's availability" />
                   <Radio
-                    value="2"
+                    value="Doctor's availability"
+                    label="Doctor's availability"
+                  />
+                  <Radio
+                    value="Competition from other pharmaceutical companies"
                     label="Competition from other pharmaceutical companies"
                   />
                   <Radio
-                    value="3"
+                    value="Internal workload and territory size"
                     label="Internal workload and territory size"
                   />
-                  <Radio value="4" label="Relationships with doctors" />
+                  <Radio
+                    value="Relationships with doctors"
+                    label="Relationships with doctors"
+                  />
 
                   <div className="flex items-center gap-3">
                     <Radio value="0" label="Other" />
