@@ -21,5 +21,4 @@ model user_form {
   question_8 String   @db.VarChar(150)
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
-  email      String   @db.VarChar(150)
 }

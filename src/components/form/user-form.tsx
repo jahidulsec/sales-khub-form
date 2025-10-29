@@ -22,7 +22,6 @@ import { toast } from "sonner";
 import { useSearchParams } from "next/navigation";
 
 const FormSchema = z.object({
-  email: z.email("Enter your email"),
   question_1: z.string("Enter your answer").min(1, "At least 1 character"),
   question_2: z.string("Enter your answer").min(1, "At least 1 character"),
   question_3: z.string("Enter your answer").min(1, "At least 1 character"),
@@ -62,20 +61,6 @@ export default function UserForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-14"
       >
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input type="email" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
         <FormField
           control={form.control}
           name="question_1"
