@@ -1,3 +1,4 @@
+import React from "react";
 import UserForm from "@/components/form/user-form";
 import {
   Empty,
@@ -8,7 +9,6 @@ import {
 } from "@/components/ui/empty";
 import { SearchParams } from "@/types/search-params";
 import { ListCollapse } from "lucide-react";
-import React from "react";
 
 export default async function HomePage({
   searchParams,
